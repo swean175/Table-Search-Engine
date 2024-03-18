@@ -1,0 +1,19 @@
+{"Serwisant":["Brygada III","Brygada III","Zmiana I","Zmiana I","Zmiana I","Zmiana I","Zmiana I","Zmiana I","Zmiana I","Brygada IV","Brygada IV","Brygada IV","Zmiana I","Zmiana I","Zmiana I","Zmiana I","Brygada IV"],
+
+"Wydział":["Engineering", "Maintenance", "Quality Control", "Production", "IT", "Facilities", "Research & Development", "Human Resources", "Inventory", "Safety", "Purchasing", "Finance", "Shipping", "Engineering", "Maintenance", "Quality Control", "Production"],
+
+"Symbol":["symb-RP1", "symb-RP2", "symb-RP3", "symb-RP4", "symb-RP5", "symb-RP6", "symb-RP7", "symb-RP8", "symb-RP9", "symb-RP10", "symb-RP11", "symb-RP12", "symb-RP13", "symb-RP14", "symb-RP15", "symb-RP16", "symb-RP17"],
+
+"Punkt":["RP1", "RP2", "RP3", "RP4", "RP5", "RP6", "RP7", "RP8", "RP9", "RP10", "RP11", "RP12", "RP13", "RP14", "RP15", "RP16", "RP17"],
+
+"Opis punktu":["Main Building", "Storage Room", "Control Room", "Maintenance Area", "Production Floor", "Laboratory", "Server Room", "Outdoor Area", "Office Space", "Testing Area", "Warehouse", "Break Room", "Loading Dock", "Machine Shop", "Conference Room", "HVAC Room", "Facility Grounds"],
+
+"Projekt":["Proj1", "Proj2", "Proj3", "Proj4", "Proj5", "Proj6", "Proj7", "Proj8", "Proj9", "Proj10", "Proj11", "Proj12", "Proj13", "Proj14", "Proj15", "Proj16", "Proj17"],
+
+"Opis usterki":["Inspect equipment", "Replace filters", "Check wiring", "Grease moving parts", "Test safety systems", "Clean work area", "Calibrate sensors", "Replace belts", "Update software", "Inspect pipes", "Lubricate moving parts", "Test backup systems", "Check fluid levels", "Inspect connections", "Replace worn parts", "Refill fluids", "Adjust settings"],
+
+"Zgłoszenie":["2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","","","","","2024-02-23, 00:00"],
+
+"Serwis":["2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23, 00:00","2024-02-23","2024-02-23","2024-02-23","2024-02-23","2024-02-23, 00:00"],
+
+"Wpis":["2024-02-23, 20:58","2024-02-23, 20:56","2024-02-23, 13:18","2024-02-23, 13:17","2024-02-23, 12:59","2024-02-23, 12:58","2024-02-23, 12:47","2024-02-23, 12:43","2024-02-23, 12:40","2024-02-23, 12:40","2024-02-23, 12:40","2024-02-23, 12:39","2024-02-23, 11:45","2024-02-23, 11:42","2024-02-23, 11:41","2024-02-23, 11:10","2024-02-23, 00:24"]}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Baza 2.0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"/>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>⚡Baza Raportów⚡</h1>
+       
+        </header>
+        <div class="container-fluid">
+                    <i id="loader" class="fa-solid fa-spinner fa-spin-pulse fa-5x"></i>
+        </div>
+
+        
+            <section>
+                <form id="form" name="form" class="pico">
+                    <fieldset class="grid" >
+                        <label> Serwisant
+                               <select name="Serwisant" aria-label="Wybierz serwisanta">
+                                <option selected value="">
+                                    Szukaj wszystkich, lub wybierz serwisanta</option>
+                            <option>Zmiana I</option>
+                            <option>Brygada I</option>
+                            <option>Brygada II</option>
+                            <option>Brygada III</option>
+                            <option>Brygada IV</option>
+                        </select>
+                        </label>
+
+                        <label> Wydział
+                            <select name="Wydział" aria-label="Wybierz wydział">
+                            <option selected value="">
+                                Szukaj we wszystkich, lub wybierz wydział</option>
+                        <option>Engineering</option>
+                        <option>Maintenance</option>
+                        <option>Quality Control</option>
+                        <option>Production</option>
+                        <option>IT</option>
+                        <option>Facilities</option>
+                        <option>Research & Development</option>
+                        <option>Human Resources</option>
+                        <option>Inventory</option>
+                        <option>Safety</option>
+                        <option>Purchasing</option>
+                        <option>Finance</option>
+                        <option>Shipping</option>
+                    </select>  
+                        </label>
+                    </fieldset>
+                      
+                    <fieldset class="grid">
+
+                    <label> Symbol
+                     <input name="Symbol" type="search" placeholder="Wpisz symbol">
+                     </label>
+
+                     <label> Punkt
+                     <input name="Punkt" type="search" placeholder="Wpisz Punkt">
+                     </label>
+
+                       <label> Opis punktu
+                       <input name="OpisPunktu" type="search" placeholder="Wpisz opis punktu">
+                       </label>
+
+                     <label> Projekt
+                     <input name="Projekt" type="search" placeholder="Wpisz projekt">
+                     </label>
+
+                      <label> Opis usterki
+                     <input name="Fraza" type="search" placeholder="Wpisz frazę">
+                    </label>
+
+                    </fieldset>
+                    
+               
+
+                    <fieldset role="group">
+                            
+                        <label>od
+                            <input type="date" name="fromDate" aria-label="Date"  pattern="\d{4}-\d{2}-\d{2}"/>
+                        </label>
+                        <label>do
+                             <input type="date" name="toDate" aria-label="Date" pattern="\d{4}-\d{2}-\d{2}"/>
+                        </label>
+                        </fieldset>
+
+                    <button name = "form" type="submit">Szukaj</button>
+                </section>
+
+                </form>
+          
+         
+       
+    </main>
+    <section class="container-fluid">
+            <progress id="progress" class="progress"></progress>
+        <div id="data">
+        </div>
+        <div id="noresults"></div>
+    </section>
+   
+    <script src="index.js"></script>
+</body>
+</html>
