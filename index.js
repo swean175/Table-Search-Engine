@@ -29,7 +29,7 @@ async function fetchData() {
 
    fetchData()
 
-   //Core Functionality And Data Formating
+   //Data Formating
 function main(){
   const dateTruncate = baza.Serwis.map(el => {
     return el.slice(0,10)
@@ -91,24 +91,28 @@ search(formData)
 
 function checkRange(from, to){
  
-let begin = baza.Serwis.indexOf(`${from}, 00:00`)
-let end = baza.Serwis.indexOf(`${to}, 00:00`)
+let begFormated = Number(from.slice(8)) - 1
+let endFormated = Number(to.slice(8)) - 1
 
+let begin = baza.Serwis.indexOf(from.slice(0,8)+begFormated.toString())
+let end = baza.Serwis.indexOf(to.slice(0,8)+endFormated.toString())
 
-// console.log("begin " + begin)
-// console.log("end " + end)
+console.log("begin " + begin)
+console.log("end " + end)  
+
   let sum
   let indArr = []
- 
 
 if (from !== ""){
   if (to !== ""){
-    sum = end - begin
+    sum = begin - end 
+    console.log('sum =  '+ sum)
+  } else {
+    sum = begin
   }
-  sum = baza.Serwis.length - begin
 
 } else {
-  to !== "" ? sum = end : sum = baza.Serwis.length
+  to !== "" ? sum = baza.Serwis.length - end : sum = baza.Serwis.length 
 }
 
 
@@ -120,8 +124,8 @@ function loop(){
     indArr.push(j)
 
     } else{
-    let Inumb = begin + j
-  begin > 0 ? indArr.push(Inumb): indArr.push(j)
+    let Inumb = end + j
+ end > 0 ? indArr.push(Inumb): indArr.push(j) 
     }
   }
 }
@@ -129,10 +133,10 @@ function loop(){
 loop()
 
   
-  return [...indArr]
+ return indArr
 }
 
-// Serching Matches And Saving Indexes
+// Serching Matches In Each Categories And Saving Indexes 
 
 function search(formData){
 
@@ -148,15 +152,14 @@ function search(formData){
 //  console.log(dateRange)
 dateRange = []
   if (baza.Serwis.includes(formData.fromDate) && baza.Serwis.includes(formData.toDate)){
-  dateRange.push(checkRange(formData.fromDate, formData.toDate))
-  // console.log('dateRange when date bellow')
-  // console.log(dateRange )
+  dateRange = checkRange(formData.fromDate, formData.toDate) 
+  console.log('dateRange when date bellow')
+  console.log(dateRange )
   } else {
-    dateRange.push(0)
-    alert("Choose correct dates or skip it")
+    alert("Input dates from existing range or skip")
   }
 
-  //Checking Matching Frazes ---------------
+  //Checking Matching And Filtering Frazes ---------------
 
 singleKeys.map((it)=>{
   let n = 0
@@ -164,7 +167,7 @@ singleKeys.map((it)=>{
   if (formData[it] !== undefined && formData[it] !== null && formData[it] !== ""){
     while (n < baza[it].length) {
       let fraza = formData[it].toLowerCase()
-      if (it === "Serwisant" || it === "Wydział"){
+      if (it === "Serwisant" || it === "Wydział"){ // ----------- Instead "Serwisant" and "Wydział" enter first two categories in your table
         baza[it][n] === fraza ? ind = n : ind = -1
       } else {
         baza[it][n].includes(fraza) ? ind = n : ind = -1
@@ -176,8 +179,9 @@ singleKeys.map((it)=>{
   
   }  else if (it === "Serwis"){
     for (let i = 0; i < dateRange.length; i++){
-      ind = baza.Serwis.indexOf(dateRange[i])
-   ind >= 0?searchIndex.Serwis.push(ind) : null
+      ind = dateRange.length
+      
+   ind >= 0?searchIndex.Serwis.push(dateRange[i]) : null  
     }
   }
 })
@@ -270,7 +274,7 @@ nowyMap = cutUndefined(cutMap)
                     // console.log('findArr below')
                     // console.log(findRes)
 
-                    findRes ? arr[u].push(it) : console.log('does not go through '+ it) // arrCheck[s].filter((f)=>f===it)
+                    findRes ? arr[u].push(it) : console.log('does not go through '+ it) 
                     // console.log('succes - ' + it)
                   } else {
                     // console.log('null') 
@@ -290,8 +294,8 @@ nowyMap = cutUndefined(cutMap)
                     let afterCut = cutUndefined(findArr)
                     let findRes = afterCut.includes(it)
 
-                    findRes ? arr[u].push(it) : console.log('nie spełniło warunku filter w W') 
-                    // console.log('succes - przez W  ')
+                    findRes ? arr[u].push(it) : console.log('Condition not fulfilled in W - iteration') 
+                    // console.log('succes - in W  ')
                   } else {
                     console.log('null') 
                   }
@@ -309,7 +313,7 @@ nowyMap = cutUndefined(cutMap)
                 serwChosenArr.push(it)
                
                } else if ( choiceCheck[u] ){
-                console.log('nie ma wynikku')
+                console.log('no matches')
               
               }
              
@@ -359,14 +363,11 @@ if (arrCheck.length > 0) {
     });
   }
 }
-console.log('commonElementsInPopulatedArrays below');
-console.log(commonElementsInPopulatedArrays);
-if (commonElementsInPopulatedArrays !== undefined){
-  arr = commonElementsInPopulatedArrays
-  commonElementsInPopulatedArrays.length === 0 ? noFind = true: null
-} else {
-   console.log('no repeating elemnts')
-}
+// console.log('commonElementsInPopulatedArrays below');
+// console.log(commonElementsInPopulatedArrays);
+arr = commonElementsInPopulatedArrays
+
+commonElementsInPopulatedArrays.length === 0 ? noFind = true: null
 
 }
 //--------------------------
@@ -374,58 +375,55 @@ if (commonElementsInPopulatedArrays !== undefined){
 
   const flated = arr.flat()
 
-  console.log('flated below')
-  console.log(flated)
+  // console.log('flated below')
+  // console.log(flated)
 
   const checkIfSum = flated.reduce((accumulator, currentValue) => {
     return accumulator + currentValue;
   }, 0)
 
-  console.log('checkIfSum below')
-  console.log(checkIfSum)
+  // console.log('checkIfSum below')
+  // console.log(checkIfSum)
 
  let checkIfEmpty 
 
 flated.length > 0 ? checkIfEmpty = false: checkIfEmpty = true
 
-  console.log('check if emty below')
-  console.log(checkIfEmpty)
+  // console.log('check if emty below')
+  // console.log(checkIfEmpty)
 
   let found 
 
 // Checks What To Display ----------------------------------------------
 
-  if (checkIfSum > 0 && !checkIfEmpty && !choiceCheck.includes(true)){
+  if (checkIfSum !== 0 && !checkIfEmpty && !choiceCheck.includes(true)){ 
     found = Array.from(new Set(flated))
-    console.log('fuond below')
-    console.log(found)
+    // console.log('fuond below')
+    // console.log(found)
   } else if (checkIfEmpty && choiceCheck.includes(true) ){
 found = []
-console.log('nie znaleziono')
+console.log('no found')
   } else if (!checkIfEmpty && choiceCheck.includes(true) ){
     found = []
-    console.log('nie znaleziono')
+    console.log('no found')
       } else if (serwChoosen && checkIfEmpty && !noFind) {
 found = serwChosenArr
   } else if (checkIfEmpty && noFind ){
 found = []
   } else if (checkIfSum === 0 && !checkIfEmpty) {
     found = Array.from(new Set(flated))
-  } else if (checkIfSum === undefined && noFind) {
-    found = []
-    console.log('nie znaleziono')
   } else {
     found = []
     for (let y = 0; y < baza.Serwisant.length; y++){
       found.push(y)
     }
-    console.log('fuond allIndexes below')
-    console.log(found)
+    // console.log('fuond all Indexes below')
+    // console.log(found)
   }
 
   renderData(found)
   found.length === 0 ? 
-  noResults.innerHTML=`<h2 style="color:#e62e00; text-align:center;">Nie znaleziono wyników w tej kategori</h2>` 
+  noResults.innerHTML=`<h2 style="color:#e62e00; text-align:center;">No matches in this categories</h2>` 
   : noResults.innerHTML=``
 }
 //Display Results
@@ -441,11 +439,11 @@ for(let q = 0; q < key.length; q++){
   <td>${baza[singleKeys[1]][key[q]]}</td>
   <td>${baza[singleKeys[2]][key[q]]}</td>
   <td>${baza[singleKeys[3]][key[q]]}</td>
-  <td>${baza[singleKeys[4]][key[q]]}</td>
+  <td><small>${baza[singleKeys[4]][key[q]]}</small></td>
   <td>${baza[singleKeys[5]][key[q]]}</td>
-  <td>${baza[singleKeys[6]][key[q]]}</td>
-  <td>${baza[singleKeys[7]][key[q]]}</td>
-  <td>${baza[singleKeys[9]][key[q]]}</td>
+  <td><small>${baza[singleKeys[6]][key[q]]}</small></td>
+  <td><small>${baza[singleKeys[7]][key[q]]}</small></td>
+  <td><small>${baza[singleKeys[9]][key[q]]}</small></td>   
 </tr>`
 }
 
