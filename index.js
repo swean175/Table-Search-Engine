@@ -168,9 +168,9 @@ singleKeys.map((it)=>{
     while (n < baza[it].length) {
       let fraza = formData[it].toLowerCase()
       if (it === "Serwisant" || it === "Wydział"){ // ----------- Instead "Serwisant" and "Wydział" enter first two categories in your table
-        baza[it][n] === fraza ? ind = n : ind = -1
+        baza[it][n].toLowerCase() === fraza ? ind = n : ind = -1
       } else {
-        baza[it][n].includes(fraza) ? ind = n : ind = -1
+        baza[it][n].toLowerCase().includes(fraza) ? ind = n : ind = -1
       }
     
       ind >= 0 ?searchIndex[it].push(ind): searchIndex[it].push(undefined)
