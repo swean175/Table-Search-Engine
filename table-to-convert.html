@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paste html table</title>
+</head>
+<body>
+Paste yor Table instead of example considering table format
+<!--   --------------------------------------------------------------- -->
+    <table><tbody>
+<tr class="tbl_head"><td align="center">SerwisTeam:</td><td align="center">Department:</td>
+  <td align="center">Symbol:</td><td align="center">Point:</td>
+  <td align="center">Point description:</td><td align="center">Project:</td>
+  <td align="center">Failure description:</td><td align="center">Isues:</td>
+  <td align="center">Call:</td><td align="center">Serwis:</td>
+  <td align="center">Entry:</td><td class="non_printable" align="center">select:</td></tr>
+  <tr><td width="150">Brygada III</td><td width="70" align="center">xx</td>
+  <td width="70" align="center">cvcx23</td><td width="70" align="center">dggs</td>
+  <td width="300" align="center">lorem ispum</td><td width="100" align="center">25-17-871-02</td>
+  <td width="400">lorem ispum lorem ispum</td>
+  <td width="200"></td><td width="150" align="center">2024-02-23, 00:00</td>
+  <td width="150" align="center">2024-02-23, 00:00</td>
+  <td width="150" align="center">2024-02-23, 20:58</td>
+  <td class="non_printable" width="100" align="center"><input type="radio" name="serwis_ID" value="97466"></td></tr>
+  <tr><td width="150">Brygada III</td>
+  <td width="70" align="center">cvcx23</td>
+  <td width="70" align="center"></td>
+  <td width="70" align="center"></td><td width="300" align="center"></td>
+  <td width="100" align="center"></td><td width="400">lorem ispum lorem ispum</td>
+  <td width="200"></td>
+  <td width="150" align="center">2024-02-23, 00:00</td><td width="150" align="center">2024-02-23, 00:00</td>
+  <td width="150" align="center">2024-02-23, 20:56</td></tr>
+      <tr><td width="150">Zmiana I</td><td width="70" align="center">rr</td>
+  <td width="70" align="center"></td>
+  <td width="70" align="center"></td>
+  <td width="300" align="center"></td>
+  <td width="100" align="center"></td>
+  <td width="400">lorem ispum lorem ispum lorem ispum</td>
+  <td width="200"></td>
+  <td width="150" align="center">2024-02-23, 00:00</td><td width="150" align="center">2024-02-23, 00:00</td>
+  <td width="150" align="center">2024-02-23, 13:18</td>
+  </tr>
+</tbody></table>
+
+  <!--   --------------------------------------------------------------- -->
+  
+<script >
+var table = document.querySelector("table")
+const link = document.createElement('a');
+var obj = {};
+
+ function tableToJSON() {
+
+var rows = table.rows;
+
+
+
+ for (let j = 0; j < 11 ; j++){
+let col 
+let cut
+cut = rows[0].cells[j].textContent
+col = cut.slice(0, -1)
+
+obj[col] = iteratuj(j)
+}
+
+
+function iteratuj(it){
+ let data = []
+
+for (let i = 0; i < rows.length; i++){
+
+ let wpis = rows[i].cells[it].textContent
+data.push(wpis)
+
+        }
+
+
+data.shift()
+return data
+    }
+
+return JSON.stringify({...obj});
+
+}
+
+link.href = "data:text/json;charset=utf-8," + tableToJSON();
+link.download = "data-baza.json";
+document.body.appendChild(link);
+link.click();
+console.log(obj)
+
+
+
+</script>
+</body>
+</html>
