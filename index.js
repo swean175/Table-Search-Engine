@@ -37,7 +37,7 @@ function main(){
   const lowerSerwisant = baza.Serwisant.map(el => {
     return el.toLowerCase()
   });
-  const lowerWydzial = baza.Wydział.map(el => {
+  const lowerWydzial = baza.Wydział.map(el => {  //--!! Adjust categories to your table
     return el.toLowerCase()
   });
   const lowerSymbol = baza.Symbol.map(el => {
@@ -58,7 +58,7 @@ function main(){
   baza.Wydział = lowerWydzial
   baza.Symbol = lowerSymbol
   baza.Punkt = lowerPunkt
-  baza["Opis punktu"] = lowerOpisP
+  baza["Opis punktu"] = lowerOpisP  //--!! Adjust categories to your table
   baza["Opis usterki"] = lowerOpisU
 
   // console.log("baza below Serwisant")
@@ -77,7 +77,7 @@ form.addEventListener("submit",(e) => {
   formData["Wydział"] = e.target.Wydział.value 
   formData["Symbol"] = e.target.Symbol.value 
   formData["Punkt"] = e.target.Punkt.value 
-  formData["Opis punktu"] = e.target.OpisPunktu.value 
+  formData["Opis punktu"] = e.target.OpisPunktu.value //--!! Adjust categories to your table
   formData["Projekt"] = e.target.Projekt.value 
   formData["Opis usterki"] = e.target.Fraza.value 
   formData.fromDate = e.target.fromDate.value
@@ -94,7 +94,7 @@ function checkRange(from, to){
 let begFormated = Number(from.slice(8)) - 1
 let endFormated = Number(to.slice(8)) - 1
 
-let begin = baza.Serwis.indexOf(from.slice(0,8)+begFormated.toString())
+let begin = baza.Serwis.indexOf(from.slice(0,8)+begFormated.toString()) //--!! Adjust categories to your table, "serwis" is source of date of activity
 let end = baza.Serwis.indexOf(to.slice(0,8)+endFormated.toString())
 
 console.log("begin " + begin)
@@ -146,7 +146,7 @@ function search(formData){
   // console.log(singleKeys)
   
 
- let searchIndex = {"Serwisant":[], "Wydział":[], "Symbol":[], "Punkt":[], "Opis punktu":[], "Projekt":[], "Opis usterki":[], "Serwis":[]}
+ let searchIndex = {"Serwisant":[], "Wydział":[], "Symbol":[], "Punkt":[], "Opis punktu":[], "Projekt":[], "Opis usterki":[], "Serwis":[]}   //--!! Adjust categories to your table
     let dateRange
 //     console.log("dataRange below")
 //  console.log(dateRange)
